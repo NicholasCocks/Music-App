@@ -1,6 +1,6 @@
 <% action = (user.persisted? ? user_url(user) : users_url) %>
-<% method = (user.persisted? ? "patch" : "post" %>
-<% message = (user.persisted? ? "Update user" ? "Create user" %>
+<% method = (user.persisted? ? "patch" : "post") %>
+<% message = (user.persisted? ? "Update user" : "Create user") %>
 
 <form action="<%= action %>" method="post">
 <%# the _method input is to be able to override the original input %>
@@ -13,10 +13,10 @@
         type="hidden"
         value="<%= form_authenticity_token %>">
 
-    <label for="user_username">Username</label>
+    <label for="user_email">Email</label>
     <input
-    id="user_username"
-    name="user[username]"
+    id="user_email"
+    name="user[email]"
     type="text">
     <br>
 

@@ -6,8 +6,8 @@
     name="authenticity_token"
     value="<%= form_authenticity_token %>">
 
-    <label for="user_username">Username</label>
-    <input type="text" name="user[username]" id="user_username">
+    <label for="user_username">Email</label>
+    <input type="text" name="user[email]" id="user_username">
 
     <br />
 
@@ -18,3 +18,8 @@
 
     <input type="submit" value="Log in!">
 </form>
+
+<br>
+
+<p>don't have an account?<p>
+<a href=<%= new_user_url %>>Sign up!</a>

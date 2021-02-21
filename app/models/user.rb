@@ -19,16 +19,16 @@ class User < ApplicationRecord
 
     after_initialize :ensure_session_token
 
-    def find_by_credentials(email, password)
-        user = User.find_by(email: email)
-        return nil unless user && user.is_password?(password)
-        return user
+    def self.find_by_credentials(email, password)
+        @user = User.find_by(email: email)
+        
+        @user && @user.is_password?(password) ? @user : nil
     end
 
     def password=(password)
         # the reason for this instance variable is so the validation can run
         @password = password
-        BCrypt::Password.create(password)
+        self.password_digest = BCrypt::Password.create(password)
     end
 
     def is_password?(password)
